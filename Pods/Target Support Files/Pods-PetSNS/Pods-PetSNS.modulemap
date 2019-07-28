@@ -1,0 +1,6 @@
+framework module Pods_PetSNS {
+  umbrella header "Pods-PetSNS-umbrella.h"
+
+  export *
+  module * { export * }
+}
