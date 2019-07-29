@@ -26,8 +26,8 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     var postImageURL: URL!
     var postImage = UIImage()
     
-    //VIsualRecognitionを使う時のAPIkey
-    let apiKey = "*****"
+    //VisualRecognitionを使う時のAPIkey
+    let apiKey = "Ofi73saibQ1Yzb-8-m6Ls_y1iT6PKT6EyndJVT2R1jC9"
     let version = "2019-06-19"
     
     var dogOrNot: Bool = true
@@ -158,9 +158,15 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBAction func share(_ sender: Any) {
         if dogOrNot == true {
-            postData()
+            let alert = EMAlertController(icon: UIImage(named: "dogIcon.jpg"), title: "やったね！", message: "この写真は犬だよ")
+            let action = EMAlertAction(title: "OK", style: .cancel)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.postData()
+            }
         } else {
-            let alert = EMAlertController(icon: UIImage(named: "dogIcon.jpg"), title: "ごめんなさい", message: "この写真には犬は写ってないよ")
+            let alert = EMAlertController(icon: UIImage(named: "dogIcon.jpg"), title: "ごめんなさい！", message: "この写真には犬は写ってないよ")
             let action = EMAlertAction(title: "OK", style: .cancel)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
